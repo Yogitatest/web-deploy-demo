@@ -50,7 +50,7 @@ With the help of values. yaml, deployment template can get parameterized for dif
 ### How To Run:
 
 * Set up infrastructure:
-    - Method1: install helm and kubernetse on VM.Clone the code and run command below
+    - Method1: install helm and kubernetse on VM.Clone the code (https://github.com/Yogitatest/web-deploy-demo.git) and run command below
     - Command: $helm install webapp ./helm-charts --namespace=default
     - Method2: create kubernetes cluster on cloud platform and deploy helm chart on cluster.
 
