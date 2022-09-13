@@ -1,0 +1,41 @@
+
+
+application:
+  name: "webapp-demo"
+  port: 8090
+  role: backend
+
+
+image:
+  repository: alpine
+  tag: 3.14
+  pullPolicy: Always
+   
+replicaCount: 1
+revisionHistoryLimit: 0
+
+probes:
+       liveness:
+         path: /health
+         initialDelay: 5
+         timeoutSeconds: 20
+         periodSeconds: 3
+         failureThreshold: 2
+       readiness:
+         path: /health
+         initialDelay: 30
+         timeoutSeconds: 20
+         periodSeconds: 10
+         failureThreshold: 2
+
+resources:
+    limits:
+        cpu: "2.0"
+        memory: 512M
+    requests:
+        cpu: "1.0"
+        memory: 256M
+   
+env:
+   app: "webapp-demo"  
+

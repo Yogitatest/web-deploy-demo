@@ -1,0 +1,12 @@
+apiVersion: v2
+name: webapp-demo
+version: 1.0.0
+description: Helm Chart for deployment of microservices
+keywords:
+- generic_chart
+maintainers:
+- name: Yogita Gangurde
+  email: gangurdeyogita@gmail.com
+name: webapp-demo
+sources:
+-  https://github.com/Yogitatest/web-deploy-demo.git

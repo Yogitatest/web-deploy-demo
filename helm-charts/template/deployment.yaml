@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.application.name }}
+  labels:
+    app: {{ .Values.application.name }}
+    release: {{ .Release.Name }}
+    role: {{ .Values.role }}
+
+spec:
+  replicas: {{ .Values.replicaCount }}
+  revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
+  selector:
+    matchLabels:
+      app: {{ .Values.application.name }}
+      release: {{ .Release.Name }}
+      role: {{ .Values.role }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.application.name }}
+        release: {{ .Release.Name }}
+        role: {{ .Values.role }} 
+    spec:
+      containers:
+        - name: {{ .Values.application.name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          command: ["/bin/sh"]
+          args:
+          - -c
+          - |
+            sleep 20;
+            echo "starting container for $(App_Name)";       
+
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              cpu: {{ .Values.resources.limits.cpu }}
+            requests:
+              memory: {{ .Values.resources.requests.memory }}
+              cpu: {{ .Values.resources.requests.cpu }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.application.port }}
+              protocol: TCP
+          livenessProbe:
+             httpGet:
+               path: {{ .Values.probes.liveness.path }}
+               port: {{ .Values.application.port }}
+             initialDelaySeconds: {{ .Values.probes.liveness.initialDelay }}
+             periodSeconds: {{ .Values.probes.liveness.periodSeconds }}
+             timeoutSeconds: {{ .Values.probes.liveness.timeoutSeconds }}
+             failureThreshold: {{ .Values.probes.liveness.failureThreshold }}
+          readinessProbe:
+             httpGet:
+               path: {{ .Values.probes.readiness.path }}
+               port: {{ .Values.application.port }}
+             initialDelaySeconds: {{ .Values.probes.readiness.initialDelay }}
+             periodSeconds: {{ .Values.probes.readiness.periodSeconds }}
+             timeoutSeconds: {{ .Values.probes.readiness.timeoutSeconds }}
+             failureThreshold: {{ .Values.probes.readiness.failureThreshold }}
+          env:
+            - name: App_Name
+              value: {{ .Values.env.app }}
