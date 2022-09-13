@@ -44,10 +44,10 @@ we need to create a higher controller that takes care of our pod (restart if it 
 With the help of values. yaml, deployment template can get parameterized for different environment.
 
 
-## How To Run:
+### How To Run:
 
-**Set up infrastructure:
+* Set up infrastructure:
     - Method1: install helm and kubernetse on VM.Clone the code and run command below
-        * Command: $helm install webapp ./helm-charts --namespace=default
+        Command: $helm install webapp ./helm-charts --namespace=default
     - Method2: create kubernetes cluster on cloud platform and deploy helm chart on cluster.
 
