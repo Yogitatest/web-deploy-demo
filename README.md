@@ -1,9 +1,9 @@
 # webapp-demo
 
-# About:
+## About:
 The documentation help to understand building Webapp package with github action, creating docker iamge and deploying with kubernetes and helm charts.
 
-#Requirements:
+## Requirements:
 
 1. Github action workflow for build and craeting docker iamge
 2. Docker repository to push docker image
@@ -11,7 +11,7 @@ The documentation help to understand building Webapp package with github action,
 4. Kubernetes	-1.17
 
 
-#Folder Structure:
+## Folder Structure:
 
 -github/workflows
 -src/
@@ -27,13 +27,13 @@ The documentation help to understand building Webapp package with github action,
 *Building App - .github/workflows contains maven.yaml workflow to build and create docker iamge.
 *Deploying App -The root directory contains helm chart for application deployment on Kubernetes cluster.
 
-###What is Helm Chart:
+### What is Helm Chart:
 
 - Helm is a package manager for Kubernetes that allows developers to easily configure and deploy applications on Kubernetes clusters.
 - Helm uses a packaging format called charts.
 - A chart is a collection of files that describe the Kubernetes resources
 	
-#File Usage:
+## File Usage:
 
 Chart.yaml: contains metadata about the chart itself: its name, the chart version, a description, and similar details.
 
