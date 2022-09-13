@@ -5,7 +5,7 @@ The documentation help to understand building Webapp package with github action,
 
 ## Requirements:
 
-1. Github action workflow for build and craeting docker iamge
+1. Github action workflow for build and creating docker iamge
 2. Docker repository to push docker image
 3. helm	-3.0.2
 4. Kubernetes	-1.17
@@ -24,8 +24,8 @@ The documentation help to understand building Webapp package with github action,
     -deployments.yaml
     -service.yaml
 
-*Building App - .github/workflows contains maven.yaml workflow to build and create docker iamge.
-*Deploying App -The root directory contains helm chart for application deployment on Kubernetes cluster.
+* Building App - .github/workflows contains maven.yaml workflow to build and create docker iamge.
+* Deploying App -The root directory contains helm chart for application deployment on Kubernetes cluster.
 
 ### What is Helm Chart:
 
@@ -46,8 +46,8 @@ With the help of values. yaml, deployment template can get parameterized for dif
 
 ## How To Run:
 
-**.Set up infrastructure
+** .Set up infrastructure
     -Method1: install helm and kubernetse on VM.Clone the code and run command below
-        *Command: helm install webapp ./helm-charts --namespace=default
+        * Command: helm install webapp ./helm-charts --namespace=default
     -Method2: create kubernetes cluster on cloud platform and deploy helm chart on cluster.
 
