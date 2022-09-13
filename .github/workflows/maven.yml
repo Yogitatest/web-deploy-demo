@@ -38,7 +38,7 @@ jobs:
         IMAGE_TAG: 0.1
       run: |
         cp webapp-war/WebApp.war ./WebApp.war
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker build -t yogita20/webapp:$IMAGE_TAG .
         docker login -u $DCR_USER -p $DCR_PASSWD
         echo "Pushing image to docker registry..."
         docker push yogita20/webapp:$IMAGE_TAG
