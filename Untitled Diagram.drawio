@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-09-13T19:03:57.906Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="iO9KisTgJSXnh6g_P9RQ" version="20.3.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-09-13T19:27:17.825Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="PZ0rHfiHf8cv9_3WW2vI" version="20.3.0" type="github">
   <diagram id="DGfnzg1wnWB0EtSWzzrt" name="Page-1">
     <mxGraphModel dx="868" dy="425" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -39,6 +39,35 @@
         </mxCell>
         <mxCell id="nT3UJsEK4yt7cPGQOjUj-15" value="Architecture Diagram1: Deployment on VM&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#d79b00;fillColor=#ffe6cc;" vertex="1" parent="1">
           <mxGeometry x="55" y="20" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="nT3UJsEK4yt7cPGQOjUj-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="nT3UJsEK4yt7cPGQOjUj-16">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="595" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nT3UJsEK4yt7cPGQOjUj-16" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.github" vertex="1" parent="1">
+          <mxGeometry x="45" y="540" width="105" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="nT3UJsEK4yt7cPGQOjUj-18" value="" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="450" width="390" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="nT3UJsEK4yt7cPGQOjUj-19" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.eks;" vertex="1" parent="1">
+          <mxGeometry x="450" y="556" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="nT3UJsEK4yt7cPGQOjUj-20" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ecr;" vertex="1" parent="1">
+          <mxGeometry x="288.78" y="556" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="nT3UJsEK4yt7cPGQOjUj-21" value="1.check-in source code and terraform code for infrastructure set up on cloud platform.(AWS/GCP)&lt;br&gt;&amp;nbsp; 2.Create build workflow for building app and create docker image.&lt;br&gt;3.Push docker image to ECR&lt;br&gt;4.deploy app on kubernetes cluster with helm command" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="700" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="nT3UJsEK4yt7cPGQOjUj-26" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.cloud_2;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="345.5" y="490" width="37.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nT3UJsEK4yt7cPGQOjUj-27" value="Cloud Console" style="sketch=0;html=1;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=1;fontColor=#999999;shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnY9Imh0dHBzOi8vdmVjdGEuaW8vbmFubyIgd2lkdGg9IjQyNCIgaGVpZ2h0PSI0MjQiIHZpZXdCb3g9IjAgMCA0MjQgNDI0Ij4mI3hhOwk8c3R5bGUgdHlwZT0idGV4dC9jc3MiPiYjeGE7CS5zdDB7ZmlsbDojNDI4NWY0O30mI3hhOwk8L3N0eWxlPiYjeGE7CTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MjQgMHY0MjRIMFYwek0yMTIgOTcuODQ2Yy0zNy44ODQgMC03MC4xNjQgMjMuOTktODIuNDc4IDU3LjYwOGgwbC0zLjQwMy4wMDFjLTQyLjYzNCAwLTc3LjE5NiAzNC41NjItNzcuMTk2IDc3LjE5NnMzNC41NjIgNzcuMTk2IDc3LjE5NiA3Ny4xOTZoMCAxNzEuNzYzYzQyLjYzNCAwIDc3LjE5Ni0zNC41NjIgNzcuMTk2LTc3LjE5NnMtMzQuNTYyLTc3LjE5Ni03Ny4xOTYtNzcuMTk2aDBsLTMuNDAzLS4wMDFDMjgyLjE2NCAxMjEuODM3IDI0OS44ODQgOTcuODQ2IDIxMiA5Ny44NDZ6IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4mI3hhOzwvc3ZnPg==;" vertex="1" parent="1">
+          <mxGeometry x="383" y="490" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nT3UJsEK4yt7cPGQOjUj-29" value="Architecture Diagram2: Deploymnet on cloud platform(AWS/GCP)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#d6b656;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="65" y="420" width="370" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
