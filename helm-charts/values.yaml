@@ -2,7 +2,7 @@
 
 application:
   name: "webapp-demo"
-  port: 8090
+  port: 8080
   role: backend
 
 
