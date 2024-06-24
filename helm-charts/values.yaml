@@ -8,7 +8,7 @@ application:
 
 image:
   repository: yogita20/webapp
-  tag: 0.1
+  tag: 0.2
   pullPolicy: Always
    
 replicaCount: 1
