@@ -42,5 +42,5 @@ jobs:
         docker login -u $DCR_USER -p $DCR_PASSWD
         echo "Pushing image to docker registry..."
         docker push yogita20/webapp:$IMAGE_TAG
-        echo "::set-output name=image::yogita20/webapp:$IMAGE_TAG"
+        
   
