@@ -46,7 +46,7 @@ jobs:
       uses: 'google-github-actions/auth@v2'
       with:
         project_id: 'expanded-port-427419-h3'
-        workload_identity_provider: projects/64397744283/locations/global/workloadIdentityPools/github-access/providers/github-provider
+        workload_identity_provider: 'projects/64397744283/locations/global/workloadIdentityPools/github-access/providers/my-repo'
 
     - id: environment
       name: Get project 
