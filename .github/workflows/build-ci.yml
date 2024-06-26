@@ -42,29 +42,43 @@ jobs:
     #     docker login -u $DCR_USER -p $DCR_PASSWD
     #     echo "Pushing image to docker registry..."
     #     docker push yogita20/webapp:$IMAGE_TAG
-    - name: Gcloud Login
-      uses: 'google-github-actions/auth@v2'
+    # - name: Gcloud Login
+    #   uses: 'google-github-actions/auth@v2'
+    #   with:
+    #     project_id: 'expanded-port-427419-h3'
+    #     workload_identity_provider: 'projects/64397744283/locations/global/workloadIdentityPools/github-access/providers/my-repo'
+
+    # - id: environment
+    #   name: Get project 
+    #   run: |-
+    #     export PROJECT_ID=$(gcloud projects list --format 'value(project_id)' --filter name=test-demo-project)
+    #     echo "Project id is $(PROJECT_ID)"
+    #     echo "::set-output name=GKE_PROJECT::$(PROJECT_ID)"
+
+    # - id: get-credentials
+    #   run: |-
+    #    gcloud container cluster get-credentials ${cluster_name} \
+    #        --region ${location} \
+    #        --project ${{ steps.environement.output.GKE_PROJECT }}
+    #   env:
+    #       cluster_name: demo-cluster
+    #       location: us-east1
+    #       credentials: ${{ secrets.GCP_SECRET }}
+    #       project_id: expanded-port-427419-h3
+
+    - id: auth
+      uses: google-github-actions/auth@v0.4.0
       with:
-        project_id: 'expanded-port-427419-h3'
-        workload_identity_provider: 'projects/64397744283/locations/global/workloadIdentityPools/github-access/providers/my-repo'
-
-    - id: environment
-      name: Get project 
-      run: |-
-        export PROJECT_ID=$(gcloud projects list --format 'value(project_id)' --filter name=test-demo-project)
-        echo "Project id is $(PROJECT_ID)"
-        echo "::set-output name=GKE_PROJECT::$(PROJECT_ID)"
-
-    - id: get-credentials
-      run: |-
-       gcloud container cluster get-credentials ${cluster_name} \
-           --region ${location} \
-           --project ${{ steps.environement.output.GKE_PROJECT }}
-      env:
-          cluster_name: demo-cluster
-          location: us-east1
-          credentials: ${{ secrets.GCP_SECRET }}
-          project_id: expanded-port-427419-h3
+          token_format: "access_token"
+          create_credentials_file: true
+          activate_credentials_file: true
+          workload_identity_provider: 'projects/64397744283/locations/global/workloadIdentityPools/github-access/providers/my-repo'
+          service_account: ${{ secrets.GCP_SECRET }}
+          access_token_lifetime: '100s'
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v0.3.0
+    - name: set crdential_file
+      run: gcloud auth login --cred-file=${{steps.auth.outputs.credentials_file_path}}
       
     - id: get-pods
       run: kubectl get pods -A 
