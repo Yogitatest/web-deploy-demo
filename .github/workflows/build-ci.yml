@@ -35,12 +35,42 @@ jobs:
       env:
         DCR_USER: ${{ secrets.DOCKER_USER }}
         DCR_PASSWD: ${{ secrets.DOCKER_PASSWORD }}
-        IMAGE_TAG: 0.1
+        IMAGE_TAG: 0.2
       run: |
         cp webapp-war/WebApp.war ./WebApp.war
         docker build -t yogita20/webapp:$IMAGE_TAG .
         docker login -u $DCR_USER -p $DCR_PASSWD
         echo "Pushing image to docker registry..."
         docker push yogita20/webapp:$IMAGE_TAG
+        
+    - name: Gcloud Login
+      uses: 'google-github-actions/auth@v2'
+      with:
+       credentials_json: '${{ secrets.GCP_SECRET }}' 
+
+    - id: environment
+      name: Get project 
+      run: |-
+        export PROJECT_ID=$(gcloud projects list --format 'value(project_id)' --filter name=test-demo-project)
+        echo "Project id is $(PROJECT_ID)"
+        echo "::set-output name=GKE_PROJECT::$(PROJECT_ID)"
+
+    - id: get-credentials
+      run: |-
+       gcloud container cluster get-credentials ${cluster_name} \
+           --region ${location} \
+           --project ${{ steps.environement.output.GKE_PROJECT }}
+      env:
+          cluster_name: demo-cluster
+          location: us-east1
+          credentials: ${{ secrets.GCP_SECRET }}
+          project_id: expanded-port-427419-h3
+      
+    - id: get-pods
+      run: kubectl get pods -A 
+        
+        
+        
+    
         
   
