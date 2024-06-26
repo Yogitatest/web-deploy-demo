@@ -73,7 +73,7 @@ jobs:
           create_credentials_file: true
           activate_credentials_file: true
           workload_identity_provider: 'projects/64397744283/locations/global/workloadIdentityPools/github-access/providers/my-repo'
-          service_account: ${{ secrets.GCP_SECRET }}
+          service_account:  64397744283-compute@developer.gserviceaccount.com
           access_token_lifetime: '100s'
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v0.3.0
