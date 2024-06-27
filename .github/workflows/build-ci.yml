@@ -70,7 +70,7 @@ jobs:
       run: |-
         gcloud container clusters get-credentials demo-cluster \
           --zone us-east1 \
-          --project 64397744283
+          --project_id expanded-port-427419-h3
         # kubectl create namespace test 
         helm upgrade --install webapp-demo-test2 ./helm-charts -f ./helm-charts/values.yaml --namespace test --wait
         kubectl get pods --namespace test
