@@ -69,6 +69,8 @@ jobs:
     - name: deploy to GKE
       run: |-
         # kubectl create namespace test 
+        helm uninstall webapp-demo
+        echo "release uninstalled"
         helm install webapp-demo ./helm-charts --namespace test
         kubectl get pods --namespace test
         
