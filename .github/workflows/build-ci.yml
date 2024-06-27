@@ -68,9 +68,14 @@ jobs:
 
     - name: deploy to GKE
       run: |-
+        gcloud container clusters get-credentials demo-cluster \
+          --zone us-east1 \
+          --project 64397744283
         # kubectl create namespace test 
-        helm install webapp-demo-test ./helm-charts -f ./helm-charts/values.yaml --namespace test
+        helm upgrade --install webapp-demo-test2 ./helm-charts -f ./helm-charts/values.yaml --namespace test --wait
         kubectl get pods --namespace test
+        kubectl rollout status deployment/webapp-demo
+        kubectl get services -o wide
         
         
         
