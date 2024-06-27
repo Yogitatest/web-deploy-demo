@@ -57,29 +57,13 @@ jobs:
         service_account: 'my-google-cred@expanded-port-427419-h3.iam.gserviceaccount.com'
         workload_identity_provider: 'projects/64397744283/locations/global/workloadIdentityPools/github-access-gcp/providers/github-access'
 
-    # - id: 'auth'
-    #   name: 'Authenticate to Google Cloud'
-    #   uses: 'google-github-actions/auth@v1'
-    #   with:
-    #     credentials_json: ${{ secrets.GCP_SECRETS }}
-        
-    - id: environment
-      name: Get project 
-      run: |-
-        export PROJECT_ID=$(gcloud projects list --format 'value(project_id)' --filter name=test-demo-project)
-        echo "Project id is $(PROJECT_ID)"
-        echo "::set-output name=GKE_PROJECT::$(PROJECT_ID)"
+    - id: 'get-credentials'
+      uses: 'google-github-actions/get-gke-credentials@v2'
+      with:
+        cluster_name: 'demo-cluster'
+        location: 'us-east1-b'
 
-    - id: get-credentials
-      run: |-
-       gcloud container cluster get-credentials ${cluster_name} \
-           --region ${location} \
-           --project ${{ steps.environement.output.GKE_PROJECT }}
-      env:
-          cluster_name: demo-cluster
-          location: us-east1
-          credentials: ${{ secrets.GCP_SECRET }}
-          project_id: expanded-port-427419-h3
+    
       
     - id: get-pods
       run: kubectl get pods -A 
