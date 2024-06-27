@@ -68,7 +68,7 @@ jobs:
 
     - name: deploy to GKE
       run: |-
-        kubectl create namespace test 
+        # kubectl create namespace test 
         helm install webapp-demo ./helm-charts --namespace test
         kubectl get pods --namespace test
         
