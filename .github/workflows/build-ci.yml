@@ -61,8 +61,7 @@ jobs:
       uses: 'google-github-actions/get-gke-credentials@v2'
       with:
         cluster_name: 'demo-cluster'
-        location: 'us-east1-b'
-
+        location: 'us-east1'
     
       
     - id: get-pods
