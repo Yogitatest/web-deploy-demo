@@ -7,7 +7,10 @@ on: workflow_dispatch
 
 jobs:
   build:
-    
+  
+    permissions:
+      id-token: 'write'
+      
     runs-on: ubuntu-latest
 
     steps:
@@ -48,12 +51,17 @@ jobs:
     #    echo "GCP_SECRET" | tr '[:lower:]' '[:upper:]' >> $GITHUB_ENV
     #    echo ${{ secrets[env.GCP_SECRETS] }} | base64 -d > sa.json
     #    gcloud auth activate-service-account --key-file=sa.json && sa.json   
-
-    - id: 'auth'
-      name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@v1'
+    
+    - uses: 'google-github-actions/auth@v1'
       with:
-        credentials_json: ${{ secrets.GCP_SECRETS }}
+        service_account: 'my-google-cred@expanded-port-427419-h3.iam.gserviceaccount.com'
+        workload_identity_provider: 'projects/64397744283/locations/global/workloadIdentityPools/github-access-gcp/providers/github-access'
+
+    # - id: 'auth'
+    #   name: 'Authenticate to Google Cloud'
+    #   uses: 'google-github-actions/auth@v1'
+    #   with:
+    #     credentials_json: ${{ secrets.GCP_SECRETS }}
         
     - id: environment
       name: Get project 
