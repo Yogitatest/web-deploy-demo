@@ -56,7 +56,9 @@ jobs:
       with:
         service_account: 'my-google-cred@expanded-port-427419-h3.iam.gserviceaccount.com'
         workload_identity_provider: 'projects/64397744283/locations/global/workloadIdentityPools/github-access-gcp/providers/github-access'
-
+    - name: set up cloud SDK
+      uses: 'google-github-actions/setup-gcloud@v1'
+      
     - id: 'get-credentials'
       uses: 'google-github-actions/get-gke-credentials@v2'
       with:
@@ -64,13 +66,10 @@ jobs:
         location: 'us-east1'
     
     - id: get-pods
-      run: kubectl get pods -A 
+      run: kubectl get pods --namespace test 
 
     - name: deploy to GKE
       run: |-
-        gcloud container clusters get-credentials demo-cluster \
-          --zone us-east1 \
-          --project expanded-port-427419-h3
         # kubectl create namespace test 
         helm upgrade --install webapp-demo-test2 ./helm-charts -f ./helm-charts/values.yaml --namespace test --wait
         kubectl get pods --namespace test
