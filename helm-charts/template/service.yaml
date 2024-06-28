@@ -5,11 +5,9 @@ metadata:
   labels:
     app: {{ .Values.application.name }}
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
-  - port: 8080
-    nodePort: 31884
-    protocol: TCP
-    name: http
+  - port: 80
+    targetPort: 80
   selector:
     app: {{ .Values.application.name }}
