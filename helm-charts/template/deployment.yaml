@@ -1,41 +1,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.application.name }}
+  name: webapp-demo
   labels:
-    app: {{ .Values.application.name }}
-    release: {{ .Release.Name }}
+    app: webapp-demo
+    
 
 spec:
-  replicas: {{ .Values.replicaCount }}
-  revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
+  replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.application.name }}
-      release: {{ .Release.Name }}
+      app: webapp-demo
+     
       
   template:
     metadata:
       labels:
-        app: {{ .Values.application.name }}
-        release: {{ .Release.Name }}
+        app: webapp-demo
+        
     spec:
       containers:
-        - name: {{ .Values.application.name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        - name: webapp-demo
+          image: "yogita20/webapp:0.2"
           command: ["/bin/sh"]
           args: ["-c","sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"]
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          imagePullPolicy: Always
           resources:
             limits:
-              memory: {{ .Values.resources.limits.memory }}
-              cpu: {{ .Values.resources.limits.cpu }}
+              memory: 512M
+              cpu: 0.2
             requests:
-              memory: {{ .Values.resources.requests.memory }}
-              cpu: {{ .Values.resources.requests.cpu }}
+              memory: 512M
+              cpu: 0.2
           ports:
             - name: http
-              containerPort: {{ .Values.application.port }}
+              containerPort: 8080
               protocol: TCP
           # livenessProbe:
           #    httpGet:
@@ -47,6 +46,19 @@ spec:
           #      path: {{ .Values.probes.readiness.path }}
           #      port: {{ .Values.application.port }}
           #    initialDelaySeconds: {{ .Values.probes.readiness.initialDelay }}
-          env:
-            - name: App_Name
-              value: {{ .Values.env.app }}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name:  webapp-demo
+  labels:
+    app:  webapp-demo
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app:  webapp-demo
+
