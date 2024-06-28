@@ -1,5 +1,5 @@
 apiVersion: v2
-name: webapp-demo
+name: webapp-demo5
 version: 1.0.0
 description: Helm Chart for deployment of microservices
 keywords:
@@ -7,6 +7,5 @@ keywords:
 maintainers:
 - name: Yogita Gangurde
   email: gangurdeyogita@gmail.com
-name: webapp-demo
 sources:
 -  https://github.com/Yogitatest/web-deploy-demo.git
