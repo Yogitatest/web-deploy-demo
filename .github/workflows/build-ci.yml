@@ -68,9 +68,6 @@ jobs:
     - name: Install Helm
       run: |
         curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-    
-    - id: get-pods
-      run: kubectl get pods --namespace
 
     - name: deploy to GKE
       run: |-
