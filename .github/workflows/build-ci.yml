@@ -74,8 +74,7 @@ jobs:
         # kubectl create namespace test 
         kubectl apply -f ./helm-charts/template/deployment.yaml --namespace test
         #helm upgrade --install webapp-demo5 ./helm-charts -f ./helm-charts/values.yaml --namespace test --kubeconfig /home/runner/work/web-deploy-demo/web-deploy-demo/gha-kubeconfig-28037ad7784c24f1
-        kubectl get pods --namespace test
-        kubectl rollout status deployment/webapp-demo
+        kubectl get deployments --namespace test
         kubectl get services -o wide
         
         
