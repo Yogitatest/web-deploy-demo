@@ -1,27 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.application.name }}
+  name: webapp-demo
   labels:
-    app: {{ .Values.application.name }}
-    release: {{ .Release.Name }}
+    app: webapp-demo
 
 spec:
-  replicas: {{ .Values.replicaCount }}
-  revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
+  replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.application.name }}
-      release: {{ .Release.Name }}
+      app: webapp-demo
+      
       
   template:
     metadata:
       labels:
-        app: {{ .Values.application.name }}
-        release: {{ .Release.Name }}
+        app: webapp-demo
+        
     spec:
       containers:
-        - name: {{ .Values.application.name }}
+        - name: webapp-demo
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           command: ["/bin/sh"]
           args: ["-c","sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"]
