@@ -5,7 +5,6 @@ metadata:
   labels:
     app: {{ .Values.application.name }}
     release: {{ .Release.Name }}
-    role: {{ .Values.role }}
 
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -14,13 +13,12 @@ spec:
     matchLabels:
       app: {{ .Values.application.name }}
       release: {{ .Release.Name }}
-      role: {{ .Values.role }}
+      
   template:
     metadata:
       labels:
         app: {{ .Values.application.name }}
         release: {{ .Release.Name }}
-        role: {{ .Values.role }} 
     spec:
       containers:
         - name: {{ .Values.application.name }}
@@ -39,16 +37,16 @@ spec:
             - name: http
               containerPort: {{ .Values.application.port }}
               protocol: TCP
-          livenessProbe:
-             httpGet:
-               path: {{ .Values.probes.liveness.path }}
-               port: {{ .Values.application.port }}
-             initialDelaySeconds: {{ .Values.probes.liveness.initialDelay }}
-          readinessProbe:
-             httpGet:
-               path: {{ .Values.probes.readiness.path }}
-               port: {{ .Values.application.port }}
-             initialDelaySeconds: {{ .Values.probes.readiness.initialDelay }}
+          # livenessProbe:
+          #    httpGet:
+          #      path: {{ .Values.probes.liveness.path }}
+          #      port: {{ .Values.application.port }}
+          #    initialDelaySeconds: {{ .Values.probes.liveness.initialDelay }}
+          # readinessProbe:
+          #    httpGet:
+          #      path: {{ .Values.probes.readiness.path }}
+          #      port: {{ .Values.application.port }}
+          #    initialDelaySeconds: {{ .Values.probes.readiness.initialDelay }}
           env:
             - name: App_Name
               value: {{ .Values.env.app }}
