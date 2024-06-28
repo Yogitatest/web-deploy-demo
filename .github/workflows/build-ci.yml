@@ -64,6 +64,10 @@ jobs:
       with:
         cluster_name: 'demo-cluster'
         location: 'us-east1'
+
+    - name: Install Helm
+      run: |
+        curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
     
     - id: get-pods
       run: kubectl get pods --namespace test 
@@ -71,7 +75,7 @@ jobs:
     - name: deploy to GKE
       run: |-
         # kubectl create namespace test 
-        helm upgrade --install webapp-demo-test3 ./helm-charts -f ./helm-charts/values.yaml --namespace test --wait
+        helm upgrade --install webapp-demo-test4 ./helm-charts -f ./helm-charts/values.yaml --namespace test --wait
         kubectl get pods --namespace test
         kubectl rollout status deployment/webapp-demo
         kubectl get services -o wide
