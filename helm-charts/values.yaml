@@ -25,7 +25,7 @@ probes:
 resources:
     limits:
         cpu: "0.5"
-        memory: 512M
+        memory: 256M
     requests:
         cpu: "0.5"
         memory: 256M
