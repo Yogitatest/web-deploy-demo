@@ -7,7 +7,7 @@ application:
 
 
 image:
-  repository: registry-1.docker.io/yogita20/webapp
+  repository: yogita20/webapp
   tag: 0.2
   pullPolicy: Always
    
@@ -29,7 +29,5 @@ resources:
     requests:
         cpu: "1.0"
         memory: 256M
-   
-env:
-   app: "webapp-demo"  
+
 
