@@ -73,8 +73,7 @@ jobs:
       run: |-
         # kubectl create namespace test 
         #kubectl apply -f ./helm-charts/template/deployment.yaml --namespace test
-        helm upgrade --install webapp-demo ./helm-charts -f ./helm-charts/values.yaml --namespace test --kubeconfig /home/runner/work/web-deploy-demo/web-deploy-demo/gha-kubeconfig-a8bf459352207704
-        kubectl get deployments --namespace test
+        helm upgrade --install webapp-demo ./helm-charts -f ./helm-charts/values.yaml --namespace test --kubeconfig $KUBE_CONFIG_PATH
         kubectl get services -o wide
         
         
