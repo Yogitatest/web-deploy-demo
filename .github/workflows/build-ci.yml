@@ -62,7 +62,7 @@ jobs:
     - id: 'get-credentials'
       uses: 'google-github-actions/get-gke-credentials@v2'
       with:
-        cluster_name: 'demo-cluster'
+        cluster_name: 'demo-cluster2'
         location: 'us-east1'
 
     - name: Install Helm
@@ -80,11 +80,11 @@ jobs:
       with:
           docker-image-repo: yogita20/webapp
           docker-image-tag: 0.2
-          helm-release-name: webapp-demo5
+          helm-release-name: webapp-demo
           helm-chart-path: ./helm-charts
           helm-vars-folder: ./helm-charts
           gke-project: expanded-port-427419-h3
-          gke-cluster: demo-cluster
+          gke-cluster: demo-cluster2
           gke-zone: us-east1
           gke-sa-key: ${{ secrets.GKE_SA_KEY }}
         
