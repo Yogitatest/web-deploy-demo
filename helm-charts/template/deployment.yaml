@@ -48,17 +48,17 @@ spec:
           #    initialDelaySeconds: {{ .Values.probes.readiness.initialDelay }}
 ---
 
-apiVersion: v1
-kind: Service
-metadata:
-  name:  webapp-demo
-  labels:
-    app:  webapp-demo
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-    targetPort: 80
-  selector:
-    app:  webapp-demo
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name:  webapp-demo
+#   labels:
+#     app:  webapp-demo
+# spec:
+#   type: LoadBalancer
+#   ports:
+#   - port: 80
+#     targetPort: 80
+#   selector:
+#     app:  webapp-demo
 
