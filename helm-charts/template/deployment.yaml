@@ -23,7 +23,7 @@ spec:
         - name: webapp-demo
           image: "yogita20/webapp:0.2"
           command: ["/bin/sh"]
-          args: ["-c","sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"]
+          args: ["-c","sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; done"]
           imagePullPolicy: Always
           resources:
             limits:
