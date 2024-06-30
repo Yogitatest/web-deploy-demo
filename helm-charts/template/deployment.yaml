@@ -45,6 +45,4 @@ spec:
           #      path: {{ .Values.probes.readiness.path }}
           #      port: {{ .Values.application.port }}
           #    initialDelaySeconds: {{ .Values.probes.readiness.initialDelay }}
-          env:
-            - name: App_Name
-              value: {{ .Values.env.app }}
+         
