@@ -62,7 +62,7 @@ jobs:
     - id: 'get-credentials'
       uses: 'google-github-actions/get-gke-credentials@v2'
       with:
-        cluster_name: 'demo-cluster'
+        cluster_name: 'demo-cluster2'
         location: 'us-east1'
 
     - name: Install Helm
@@ -72,8 +72,8 @@ jobs:
     - name: deploy to GKE
       run: |-
         # kubectl create namespace test 
-        kubectl apply -f ./helm-charts/template/deployment.yaml --namespace test
-        #helm upgrade --install webapp-demo5 ./helm-charts -f ./helm-charts/values.yaml --namespace test --kubeconfig /home/runner/work/web-deploy-demo/web-deploy-demo/gha-kubeconfig-28037ad7784c24f1
+        #kubectl apply -f ./helm-charts/template/deployment.yaml --namespace test
+        helm upgrade --install webapp-demo ./helm-charts -f ./helm-charts/values.yaml --namespace test --kubeconfig /home/runner/work/web-deploy-demo/web-deploy-demo/gha-kubeconfig-28037ad7784c24f1
         kubectl get deployments --namespace test
         kubectl get services -o wide
         
