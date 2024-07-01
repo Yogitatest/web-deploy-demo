@@ -15,12 +15,12 @@ replicaCount: 1
 revisionHistoryLimit: 0
 
 probes:
-       liveness:
-         path: /health
-         initialDelay: 5
-       readiness:
-         path: /health
-         initialDelay: 30
+  liveness:
+    path: /health
+    initialDelay: 5
+  readiness:
+    path: /health
+    initialDelay: 30
 
 resources:
     limits:
