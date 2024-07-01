@@ -45,12 +45,12 @@ jobs:
         docker login -u $DCR_USER -p $DCR_PASSWD
         echo "Pushing image to docker registry..."
         docker push yogita20/webapp:$IMAGE_TAG
-    - name: Gcloud Login
-      run: |-
+    # - name: Gcloud Login
+    #   run: |-
       
-       echo "GCP_SECRET" | tr '[:lower:]' '[:upper:]' >> $GITHUB_ENV
-       echo ${{ secrets[env.GCP_SECRETS] }} | base64 -d > sa.json
-       gcloud auth activate-service-account --key-file=sa.json && sa.json   
+    #    echo "GCP_SECRET" | tr '[:lower:]' '[:upper:]' >> $GITHUB_ENV
+    #    echo ${{ secrets[env.GCP_SECRETS] }} | base64 -d > sa.json
+    #    gcloud auth activate-service-account --key-file=sa.json && sa.json   
     
     - uses: 'google-github-actions/auth@v1'
       with:
