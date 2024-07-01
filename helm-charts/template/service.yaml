@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.application.name }}
+  name: webapp-demo
   labels:
-    app: {{ .Values.application.name }}
+    app: webapp-demo
 spec:
   type: LoadBalancer
   ports:
   - port: 80
     targetPort: 80
   selector:
-    app: {{ .Values.application.name }}
+    app: webapp-demo
