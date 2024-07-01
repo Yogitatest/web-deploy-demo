@@ -74,7 +74,7 @@ jobs:
     - name: deploy to GKE
       run: |-
         # kubectl create namespace test 
-        helm upgrade --install webapp-demo2 ./helm-charts -f ./helm-charts/values.yaml --namespace test --wait --dry-run --debug
+        helm upgrade --install webapp-demo2 ./helm-charts -f ./helm-charts/values.yaml --namespace test --wait 
         kubectl get events --namespace test
         kubectl get deployments --namespace test
         
