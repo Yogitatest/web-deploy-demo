@@ -1,33 +1,14 @@
-
-
-application:
-  name: "webapp-demo"
-  port: 8080
-  
-
+replicaCount: 1
 
 image:
   repository: yogita20/webapp
-  tag: 0.2
-  pullPolicy: Always
-   
-replicaCount: 1
-revisionHistoryLimit: 0
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
 
-probes:
-       liveness:
-         path: /health
-         initialDelay: 5
-       readiness:
-         path: /health
-         initialDelay: 30
+nameOverride: ""
+fullnameOverride: ""
 
-resources:
-    limits:
-        cpu: "2.0"
-        memory: 512M
-    requests:
-        cpu: "1.0"
-        memory: 256M
-
-
+service:
+  type: ClusterIP
+  port: 80
