@@ -9,6 +9,5 @@ spec:
   ports:
   - port: 80
     targetPort: 8080
-    Protocol: TCP
   selector:
     app: webapp-demo
