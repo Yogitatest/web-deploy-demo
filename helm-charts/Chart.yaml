@@ -1,7 +1,7 @@
 apiVersion: v2
-name: webapp-demo
+name: hello-world
 version: 1.0.0
-description: Helm Chart for deployment of microservices
+description: A Helm chart for Kubernetes
 keywords:
 - generic_chart
 maintainers:
@@ -9,3 +9,6 @@ maintainers:
   email: gangurdeyogita@gmail.com
 sources:
 -  https://github.com/Yogitatest/web-deploy-demo.git
+appVersion: "1.0.0"
+
+
