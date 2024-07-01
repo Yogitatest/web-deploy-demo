@@ -17,8 +17,8 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ["/bin/sh"]
-          args: ["-c","sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; done"]
+          # command: ["/bin/sh"]
+          # args: ["-c","sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; done"]
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
