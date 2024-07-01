@@ -1,48 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp-demo
+  name: {{ include "hello-world.fullname" . }}
   labels:
-    app: webapp-demo
-
+    {{- include "hello-world.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: webapp-demo
-      
-      
+      {{- include "hello-world.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        app: webapp-demo
-        
+        {{- include "hello-world.selectorLabels" . | nindent 8 }}
     spec:
       containers:
-        - name: webapp-demo
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           command: ["/bin/sh"]
-          args: ["-c","sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"]
+          args: ["-c","sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; done"]
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          resources:
-            limits:
-              memory: {{ .Values.resources.limits.memory }}
-              cpu: {{ .Values.resources.limits.cpu }}
-            requests:
-              memory: {{ .Values.resources.requests.memory }}
-              cpu: {{ .Values.resources.requests.cpu }}
           ports:
             - name: http
-              containerPort: {{ .Values.application.port }}
+              containerPort: 80
               protocol: TCP
-          # livenessProbe:
-          #    httpGet:
-          #      path: {{ .Values.probes.liveness.path }}
-          #      port: {{ .Values.application.port }}
-          #    initialDelaySeconds: {{ .Values.probes.liveness.initialDelay }}
-          # readinessProbe:
-          #    httpGet:
-          #      path: {{ .Values.probes.readiness.path }}
-          #      port: {{ .Values.application.port }}
-          #    initialDelaySeconds: {{ .Values.probes.readiness.initialDelay }}
-         
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
